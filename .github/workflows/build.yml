@@ -18,10 +18,10 @@ jobs:
       matrix:
         os: [ macos-latest, ubuntu-latest, windows-latest ]
         include:
-          - os: macos-latest
-            os_name: macos
-          - os: ubuntu-latest
-            os_name: linux
+          #- os: macos-latest
+          #  os_name: macos
+          #- os: ubuntu-latest
+          #  os_name: linux
           - os: windows-latest
             os_name: windows
 
@@ -52,7 +52,7 @@ jobs:
 
     - name: Build, Test and Package
       if: ${{ runner.os == 'Windows' }}
-      run: eng\common\CIBuild.cmd -configuration Release -prepareMachine
+      run: eng\common\CIBuild.cmd -configuration Release -prepareMachine -projects src\AspNet.Security.OAuth.Clever\AspNet.Security.OAuth.Clever.csproj
       env:
         DOTNET_MULTILEVEL_LOOKUP: 0
         DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1

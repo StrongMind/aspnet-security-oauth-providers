@@ -8,7 +8,7 @@
     <Description>ASP.NET Core security middleware enabling Clever authentication.</Description>
     <Authors>David Cramer;Sonny Huynh;Paul Shippy</Authors>
     <PackageTags>aspnetcore;authentication;clever;oauth;security</PackageTags>
-    <Company>StrongMind</Company>
+    <Company>Strongmind</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/StrongMind/AspNet.Security.OAuth.Providers/tree/dev/src/AspNet.Security.OAuth.Clever</PackageProjectUrl>
     <RepositoryUrl>git://github.com/StrongMind/AspNet.Security.OAuth.Providers</RepositoryUrl>
