@@ -27,10 +27,8 @@ namespace AspNet.Security.OAuth.Clever
 
             Scope.Add("profile");
 
-            ClaimActions.MapJsonKey(ClaimTypes.NameIdentifier, "encodedId");
-            ClaimActions.MapJsonKey(ClaimTypes.Name, "displayName");
-            ClaimActions.MapJsonKey(Claims.Avatar, "avatar");
-            ClaimActions.MapJsonKey(Claims.Avatar150, "avatar150");
+            ClaimActions.MapJsonKey(ClaimTypes.NameIdentifier, "id");
+            ClaimActions.MapJsonKey(Claims.District, "district");
         }
     }
 }
