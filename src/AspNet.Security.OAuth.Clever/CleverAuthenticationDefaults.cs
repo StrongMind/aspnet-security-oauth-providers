@@ -42,7 +42,7 @@ namespace AspNet.Security.OAuth.Clever
         /// <summary>
         /// Default value for <see cref="OAuthOptions.TokenEndpoint"/>.
         /// </summary>
-        public const string TokenEndpoint = "https://clever.come/oauth/tokens";
+        public const string TokenEndpoint = "https://clever.com/oauth/tokens";
 
         /// <summary>
         /// Default value for <see cref="OAuthOptions.UserInformationEndpoint"/>.
