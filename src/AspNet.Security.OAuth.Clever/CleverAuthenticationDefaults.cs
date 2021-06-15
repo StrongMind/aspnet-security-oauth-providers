@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authentication.OAuth;
 namespace AspNet.Security.OAuth.Clever
 {
     /// <summary>
-    /// Default values used by the Fitbit authentication middleware.
+    /// Default values used by the Clever authentication middleware.
     /// </summary>
     public static class CleverAuthenticationDefaults
     {
@@ -37,16 +37,16 @@ namespace AspNet.Security.OAuth.Clever
         /// <summary>
         /// Default value for <see cref="OAuthOptions.AuthorizationEndpoint"/>.
         /// </summary>
-        public const string AuthorizationEndpoint = "https://www.fitbit.com/oauth2/authorize";
+        public const string AuthorizationEndpoint = "https://clever.com/oauth/authorize";
 
         /// <summary>
         /// Default value for <see cref="OAuthOptions.TokenEndpoint"/>.
         /// </summary>
-        public const string TokenEndpoint = "https://api.fitbit.com/oauth2/token";
+        public const string TokenEndpoint = "https://clever.come/oauth/tokens";
 
         /// <summary>
         /// Default value for <see cref="OAuthOptions.UserInformationEndpoint"/>.
         /// </summary>
-        public const string UserInformationEndpoint = "https://api.fitbit.com/1/user/-/profile.json";
+        public const string UserInformationEndpoint = "https://api.clever.com/v3.0/me";
     }
 }
