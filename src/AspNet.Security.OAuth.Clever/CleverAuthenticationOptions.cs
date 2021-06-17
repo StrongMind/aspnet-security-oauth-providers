@@ -7,9 +7,9 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.OAuth;
-using static AspNet.Security.OAuth.Fitbit.FitbitAuthenticationConstants;
+using static AspNet.Security.OAuth.Clever.FitbitAuthenticationConstants;
 
-namespace AspNet.Security.OAuth.Fitbit
+namespace AspNet.Security.OAuth.Clever
 {
     /// <summary>
     /// Defines a set of options used by <see cref="FitbitAuthenticationHandler"/>.
@@ -18,19 +18,17 @@ namespace AspNet.Security.OAuth.Fitbit
     {
         public FitbitAuthenticationOptions()
         {
-            ClaimsIssuer = FitbitAuthenticationDefaults.Issuer;
-            CallbackPath = FitbitAuthenticationDefaults.CallbackPath;
+            ClaimsIssuer = CleverAuthenticationDefaults.Issuer;
+            CallbackPath = CleverAuthenticationDefaults.CallbackPath;
 
-            AuthorizationEndpoint = FitbitAuthenticationDefaults.AuthorizationEndpoint;
-            TokenEndpoint = FitbitAuthenticationDefaults.TokenEndpoint;
-            UserInformationEndpoint = FitbitAuthenticationDefaults.UserInformationEndpoint;
+            AuthorizationEndpoint = CleverAuthenticationDefaults.AuthorizationEndpoint;
+            TokenEndpoint = CleverAuthenticationDefaults.TokenEndpoint;
+            UserInformationEndpoint = CleverAuthenticationDefaults.UserInformationEndpoint;
 
             Scope.Add("profile");
 
-            ClaimActions.MapJsonKey(ClaimTypes.NameIdentifier, "encodedId");
-            ClaimActions.MapJsonKey(ClaimTypes.Name, "displayName");
-            ClaimActions.MapJsonKey(Claims.Avatar, "avatar");
-            ClaimActions.MapJsonKey(Claims.Avatar150, "avatar150");
+            ClaimActions.MapJsonKey(ClaimTypes.NameIdentifier, "id");
+            ClaimActions.MapJsonKey(ClaimTypes.District, "district");
         }
     }
 }
