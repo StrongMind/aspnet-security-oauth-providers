@@ -7,16 +7,16 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.OAuth;
-using static AspNet.Security.OAuth.Clever.FitbitAuthenticationConstants;
+using static AspNet.Security.OAuth.Clever.CleverAuthenticationConstants;
 
 namespace AspNet.Security.OAuth.Clever
 {
     /// <summary>
-    /// Defines a set of options used by <see cref="FitbitAuthenticationHandler"/>.
+    /// Defines a set of options used by <see cref="CleverAuthenticationHandler"/>.
     /// </summary>
-    public class FitbitAuthenticationOptions : OAuthOptions
+    public class CleverAuthenticationOptions : OAuthOptions
     {
-        public FitbitAuthenticationOptions()
+        public CleverAuthenticationOptions()
         {
             ClaimsIssuer = CleverAuthenticationDefaults.Issuer;
             CallbackPath = CleverAuthenticationDefaults.CallbackPath;
