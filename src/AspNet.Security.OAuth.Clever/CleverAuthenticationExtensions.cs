@@ -5,74 +5,74 @@
  */
 
 using System;
-using AspNet.Security.OAuth.Fitbit;
+using AspNet.Security.OAuth.Clever;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Authentication;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
     /// <summary>
-    /// Extension methods to add Fitbit authentication capabilities to an HTTP application pipeline.
+    /// Extension methods to add Clever authentication capabilities to an HTTP application pipeline.
     /// </summary>
-    public static class FitbitAuthenticationExtensions
+    public static class CleverAuthenticationExtensions
     {
         /// <summary>
-        /// Adds <see cref="FitbitAuthenticationHandler"/> to the specified
-        /// <see cref="AuthenticationBuilder"/>, which enables Fitbit authentication capabilities.
+        /// Adds <see cref="CleverAuthenticationHandler"/> to the specified
+        /// <see cref="AuthenticationBuilder"/>, which enables Clever authentication capabilities.
         /// </summary>
         /// <param name="builder">The authentication builder.</param>
         /// <returns>The <see cref="AuthenticationBuilder"/>.</returns>
-        public static AuthenticationBuilder AddFitbit([NotNull] this AuthenticationBuilder builder)
+        public static AuthenticationBuilder AddClever([NotNull] this AuthenticationBuilder builder)
         {
-            return builder.AddFitbit(FitbitAuthenticationDefaults.AuthenticationScheme, options => { });
+            return builder.AddClever(CleverAuthenticationDefaults.AuthenticationScheme, options => { });
         }
 
         /// <summary>
-        /// Adds <see cref="FitbitAuthenticationHandler"/> to the specified
-        /// <see cref="AuthenticationBuilder"/>, which enables Fitbit authentication capabilities.
+        /// Adds <see cref="CleverAuthenticationHandler"/> to the specified
+        /// <see cref="AuthenticationBuilder"/>, which enables Clever authentication capabilities.
         /// </summary>
         /// <param name="builder">The authentication builder.</param>
         /// <param name="configuration">The delegate used to configure the OpenID 2.0 options.</param>
         /// <returns>The <see cref="AuthenticationBuilder"/>.</returns>
-        public static AuthenticationBuilder AddFitbit(
+        public static AuthenticationBuilder AddClever(
             [NotNull] this AuthenticationBuilder builder,
-            [NotNull] Action<FitbitAuthenticationOptions> configuration)
+            [NotNull] Action<CleverAuthenticationOptions> configuration)
         {
-            return builder.AddFitbit(FitbitAuthenticationDefaults.AuthenticationScheme, configuration);
+            return builder.AddClever(CleverAuthenticationDefaults.AuthenticationScheme, configuration);
         }
 
         /// <summary>
-        /// Adds <see cref="FitbitAuthenticationHandler"/> to the specified
-        /// <see cref="AuthenticationBuilder"/>, which enables Fitbit authentication capabilities.
+        /// Adds <see cref="CleverAuthenticationHandler"/> to the specified
+        /// <see cref="AuthenticationBuilder"/>, which enables Clever authentication capabilities.
         /// </summary>
         /// <param name="builder">The authentication builder.</param>
         /// <param name="scheme">The authentication scheme associated with this instance.</param>
-        /// <param name="configuration">The delegate used to configure the Fitbit options.</param>
+        /// <param name="configuration">The delegate used to configure the Clever options.</param>
         /// <returns>The <see cref="AuthenticationBuilder"/>.</returns>
-        public static AuthenticationBuilder AddFitbit(
+        public static AuthenticationBuilder AddClever(
             [NotNull] this AuthenticationBuilder builder,
             [NotNull] string scheme,
-            [NotNull] Action<FitbitAuthenticationOptions> configuration)
+            [NotNull] Action<CleverAuthenticationOptions> configuration)
         {
-            return builder.AddFitbit(scheme, FitbitAuthenticationDefaults.DisplayName, configuration);
+            return builder.AddClever(scheme, CleverAuthenticationDefaults.DisplayName, configuration);
         }
 
         /// <summary>
-        /// Adds <see cref="FitbitAuthenticationHandler"/> to the specified
-        /// <see cref="AuthenticationBuilder"/>, which enables Fitbit authentication capabilities.
+        /// Adds <see cref="CleverAuthenticationHandler"/> to the specified
+        /// <see cref="AuthenticationBuilder"/>, which enables Clever authentication capabilities.
         /// </summary>
         /// <param name="builder">The authentication builder.</param>
         /// <param name="scheme">The authentication scheme associated with this instance.</param>
         /// <param name="caption">The optional display name associated with this instance.</param>
-        /// <param name="configuration">The delegate used to configure the Fitbit options.</param>
+        /// <param name="configuration">The delegate used to configure the Clever options.</param>
         /// <returns>The <see cref="AuthenticationBuilder"/>.</returns>
-        public static AuthenticationBuilder AddFitbit(
+        public static AuthenticationBuilder AddClever(
             [NotNull] this AuthenticationBuilder builder,
             [NotNull] string scheme,
             [CanBeNull] string caption,
-            [NotNull] Action<FitbitAuthenticationOptions> configuration)
+            [NotNull] Action<CleverAuthenticationOptions> configuration)
         {
-            return builder.AddOAuth<FitbitAuthenticationOptions, FitbitAuthenticationHandler>(scheme, caption, configuration);
+            return builder.AddOAuth<CleverAuthenticationOptions, CleverAuthenticationHandler>(scheme, caption, configuration);
         }
     }
 }

@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Description>ASP.NET Core security middleware enabling Fitbit authentication.</Description>
-    <Authors>Jason Loeffler;Chino Chang</Authors>
-    <PackageTags>aspnetcore;authentication;fitbit;oauth;security</PackageTags>
+    <Description>ASP.NET Core security middleware enabling Clever authentication.</Description>
+    <Authors>David Cramer;Sonny Huynh;Paul Shippy;Grace Stuart</Authors>
+    <PackageTags>aspnetcore;authentication;clever;oauth;security</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
