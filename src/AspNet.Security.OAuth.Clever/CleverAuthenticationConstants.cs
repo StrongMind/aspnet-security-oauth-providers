@@ -13,8 +13,7 @@ namespace AspNet.Security.OAuth.Clever
     {
         public static class Claims
         {
-            public const string Avatar = "urn:clever:avatar";
-            public const string Avatar150 = "urn:clever:avatar150";
+            public const string District = "urn:clever:district";
         }
     }
 }

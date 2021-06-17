@@ -19,12 +19,12 @@ using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace AspNet.Security.OAuth.Fitbit
+namespace AspNet.Security.OAuth.Clever
 {
-    public class FitbitAuthenticationHandler : OAuthHandler<FitbitAuthenticationOptions>
+    public class CleverAuthenticationHandler : OAuthHandler<CleverAuthenticationOptions>
     {
-        public FitbitAuthenticationHandler(
-            [NotNull] IOptionsMonitor<FitbitAuthenticationOptions> options,
+        public CleverAuthenticationHandler(
+            [NotNull] IOptionsMonitor<CleverAuthenticationOptions> options,
             [NotNull] ILoggerFactory logger,
             [NotNull] UrlEncoder encoder,
             [NotNull] ISystemClock clock)
