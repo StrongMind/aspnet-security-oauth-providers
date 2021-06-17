@@ -2,10 +2,10 @@ name: build
 
 on:
   push:
-    branches: [ dev, rel/* ]
+    branches: [ clever-3.17, rel/* ]
     tags: [ '*' ]
   pull_request:
-    branches: [ dev, rel/* ]
+    branches: [ clever-3.17, rel/* ]
   workflow_dispatch:
 
 jobs:
@@ -16,12 +16,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ macos-latest, ubuntu-latest, windows-latest ]
+        #os: [ macos-latest, ubuntu-latest, windows-latest ]
+        os: [ windows-latest ]
         include:
-          - os: macos-latest
-            os_name: macos
-          - os: ubuntu-latest
-            os_name: linux
+          #- os: macos-latest
+          #  os_name: macos
+          #- os: ubuntu-latest
+          #  os_name: linux
           - os: windows-latest
             os_name: windows
 
@@ -52,7 +53,7 @@ jobs:
 
     - name: Build, Test and Package
       if: ${{ runner.os == 'Windows' }}
-      run: eng\common\CIBuild.cmd -configuration Release -prepareMachine
+      run: eng\common\CIBuild.cmd -configuration Release -prepareMachine -projects src\AspNet.Security.OAuth.Clever\AspNet.Security.OAuth.Clever.csproj
       env:
         DOTNET_MULTILEVEL_LOOKUP: 0
         DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
@@ -80,17 +81,19 @@ jobs:
         name: packages-${{ matrix.os_name }}
         path: ./artifacts/packages/Release/Shipping
 
-    - name: Publish test results
-      uses: actions/upload-artifact@v1
-      if: ${{ always() }}
-      with:
-        name: testresults-${{ matrix.os_name }}
-        path: ./artifacts/TestResults/Release
+    #- name: Publish test results
+    #  uses: actions/upload-artifact@v1
+    #  if: ${{ always() }}
+    #  with:
+    #    name: testresults-${{ matrix.os_name }}
+    #    path: ./artifacts/TestResults/Release
 
-    - name: Push NuGet packages to aspnet-contrib MyGet
-      run: dotnet nuget push "artifacts\packages\Release\Shipping\*.nupkg" --api-key ${{ secrets.MYGET_API_KEY }} --skip-duplicate --source https://www.myget.org/F/aspnet-contrib/api/v3/index.json
-      if: ${{ github.repository_owner == 'aspnet-contrib' && (github.ref == 'refs/heads/dev' || startsWith(github.ref, 'refs/heads/rel/') || startsWith(github.ref, 'refs/tags/')) && runner.os == 'Windows' }}
+    - name: Push NuGet packages to Strongmind Packages
+      run: |
+        dotnet nuget add source https://pkgs.dev.azure.com/strongmind/Strongmind/_packaging/StrongMindPackages/nuget/v3/index.json --name StrongMind --username ${{secrets.ARTIFACTS_USERNAME}} --password ${{secrets.ARTIFACTS_PASSWORD}}
+        dotnet nuget push "artifacts\packages\Release\Shipping\*.nupkg" --api-key az --skip-duplicate --source https://pkgs.dev.azure.com/strongmind/Strongmind/_packaging/StrongMindPackages/nuget/v3/index.json
+      if: ${{ github.repository_owner == 'StrongMind' && (github.ref == 'refs/heads/clever-3.17' || startsWith(github.ref, 'refs/heads/rel/') || startsWith(github.ref, 'refs/tags/')) && runner.os == 'Windows' }}
 
-    - name: Push NuGet packages to NuGet.org
-      run: dotnet nuget push "artifacts\packages\Release\Shipping\*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --skip-duplicate --source https://api.nuget.org/v3/index.json
-      if: ${{ github.repository_owner == 'aspnet-contrib' && startsWith(github.ref, 'refs/tags/') && runner.os == 'Windows' }}
+    #- name: Push NuGet packages to NuGet.org
+    #  run: dotnet nuget push "artifacts\packages\Release\Shipping\*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --skip-duplicate --source https://api.nuget.org/v3/index.json
+    #  if: ${{ github.repository_owner == 'aspnet-contrib' && startsWith(github.ref, 'refs/tags/') && runner.os == 'Windows' }}
