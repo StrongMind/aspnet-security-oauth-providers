@@ -2,10 +2,10 @@ name: build
 
 on:
   push:
-    branches: [ dev, rel/* ]
+    branches: [ main ]
     tags: [ '*' ]
   pull_request:
-    branches: [ dev, rel/* ]
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -92,7 +92,7 @@ jobs:
       run: |
         dotnet nuget add source https://pkgs.dev.azure.com/strongmind/Strongmind/_packaging/StrongMindPackages/nuget/v3/index.json --name StrongMind --username ${{secrets.ARTIFACTS_USERNAME}} --password ${{secrets.ARTIFACTS_PASSWORD}}
         dotnet nuget push "artifacts\packages\Release\Shipping\*.nupkg" --api-key az --skip-duplicate --source https://pkgs.dev.azure.com/strongmind/Strongmind/_packaging/StrongMindPackages/nuget/v3/index.json 
-      if: ${{ github.repository_owner == 'StrongMind' && (github.ref == 'refs/heads/dev' || startsWith(github.ref, 'refs/heads/rel/') || startsWith(github.ref, 'refs/tags/')) && runner.os == 'Windows' }}
+      if: ${{ github.repository_owner == 'StrongMind' && (github.ref == 'refs/heads/main') && runner.os == 'Windows' }}
 
     #- name: Push NuGet packages to NuGet.org
     #  run: dotnet nuget push "artifacts\packages\Release\Shipping\*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --skip-duplicate --source https://api.nuget.org/v3/index.json
